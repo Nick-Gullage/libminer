@@ -1,3 +1,13 @@
+#' A function title
+#'
+#' A function description
+#'
+#' @return a data.frame of packages called
+#' @export
+#'
+#' @examples
+#' a use-case example
+#' lib_summary()
 lib_summary <-  function(){
   pkgs <- utils::installed.packages()
   pkg_tbl <- table(pkgs[, "LibPath"])
