@@ -9,25 +9,28 @@
 #'
 #' @examples
 #' lib_summary()
-lib_summary <-  function(sizes = F){
-  if(!is.logical(sizes)){
-    stop("Sizes must be logical.")
+lib_summary <- function(sizes = FALSE) {
+  if (!is.logical(sizes)) {
+    stop("'sizes' must be logical (TRUE or FALSE)")
   }
 
-  pkgs <- utils::installed.packages()
-  pkg_tbl <- table(pkgs[, "LibPath"])
-  pkg_df <-  as.data.frame(pkg_tbl, stringsAsFactors = F)
+  pkg_df <- lib()
+  pkg_tbl <- table(pkg_df[, "LibPath"])
+  pkg_df <- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)
+
   names(pkg_df) <- c("Library", "n_packages")
 
-  if(sizes){
-    pkg_df$lib_size <- vapply(
+  if (isTRUE(sizes)) {
+    pkg_df$lib_size <- map_dbl(
       pkg_df$Library,
-      \(x) {
-        sum(fs::file_size(fs::dir_ls(x, recurse = T)))
-      },
-      FUN.VALUE = numeric(1)
+      \(x) sum(fs::file_size(fs::dir_ls(x, recurse = TRUE)))
     )
   }
 
   pkg_df
+}
+
+lib <- function() {
+  pkgs <- utils::installed.packages()
+  as.data.frame(pkgs, stringsAsFactors = FALSE)
 }
