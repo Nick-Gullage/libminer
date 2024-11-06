@@ -12,6 +12,3 @@ a data.frame of packages
 \description{
 Another description
 }
-\examples{
-lib()
-}
