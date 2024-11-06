@@ -30,6 +30,14 @@ lib_summary <- function(sizes = FALSE) {
   pkg_df
 }
 
+#' Get libraries
+#'
+#' Another description
+#'
+#' @return
+#' @export
+#'
+#' @examples
 lib <- function() {
   pkgs <- utils::installed.packages()
   as.data.frame(pkgs, stringsAsFactors = FALSE)
