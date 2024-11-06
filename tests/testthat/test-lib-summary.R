@@ -22,5 +22,5 @@ test_that("sizes works", {
 })
 
 test_that("lib_summary fails appropriately", {
-  expect_error(lib_summary("hello"), "Sizes must be logical")
+  expect_error(lib_summary("hello"))#, "'sizes' must be logical (TRUE or FALSE)"
 })

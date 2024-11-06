@@ -4,7 +4,7 @@
 \alias{lib_summary}
 \title{A function title}
 \usage{
-lib_summary(sizes = F)
+lib_summary(sizes = FALSE)
 }
 \arguments{
 \item{sizes}{LOGICAL; if TRUE (default), adds a column of the total bit size of libraries}
